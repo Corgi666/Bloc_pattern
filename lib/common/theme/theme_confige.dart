@@ -5,3 +5,7 @@ class Themes {
       appBarTheme:
           const AppBarTheme(elevation: 0, backgroundColor: Colors.white));
 }
+
+bool isDarkMode(BuildContext context) {
+  return MediaQuery.of(context).platformBrightness == Brightness.dark;
+}

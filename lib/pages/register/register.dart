@@ -1,4 +1,6 @@
+import 'package:appbloc/common/theme/theme_confige.dart';
 import 'package:appbloc/common/values/colors.dart';
+import 'package:appbloc/pages/register/bloc/registering_bloc.dart';
 import 'package:appbloc/pages/sigin/widgets/sign_in_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -66,26 +68,26 @@ class _RegisterState extends State<Register> {
                   SizedBox(height: 5.h),
                   buildTextFeild('Enter your user name ', 'email', 'user',
                       (value) {
-                    // context.read<SignInBloc>().add(EmailEvent(value));
+                    context.read<RegisteringBloc>().add(UsernameEvent(value));
                   }),
                   reuseableText('Email'),
                   SizedBox(height: 5.h),
                   buildTextFeild('Enter your email address', 'email', 'user',
                       (value) {
-                    // context.read<SignInBloc>().add(EmailEvent(value));
+                    context.read<RegisteringBloc>().add(EmailEvent(value));
                   }),
                   reuseableText('Password'),
                   SizedBox(height: 5.h),
                   buildTextFeild('Enter your password', 'password', 'lock',
                       (value) {
-                    // context.read<SignInBloc>().add(EmailEvent(value));
+                    context.read<RegisteringBloc>().add(PasswordEvent(value));
                   }),
                   reuseableText('Password'),
                   SizedBox(height: 5.w),
                   buildTextFeild(
-                      'Enter your Confirm  Password', 'password', 'lock',
+                      'Re-enter your password to confirm', 'password', 'lock',
                       (value) {
-                    // context.read<SignInBloc>().add(PasswordEvent(value));
+                    context.read<RegisteringBloc>().add(RePasswordEvent(value));
                   }),
                   reuseableText(
                       'By creating an account you have to agree with our them & condication'),
