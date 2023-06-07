@@ -1,10 +1,10 @@
-// ignore_for_file: prefer_const_constructors
-
+import 'package:appbloc/common/values/constant.dart';
 import 'package:appbloc/pages/welcome/bloc/welcom_bloc.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:appbloc/global.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
@@ -67,8 +67,8 @@ class _WelcomeState extends State<Welcome> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   decorator: DotsDecorator(
                       color: Colors.grey,
-                      size: Size.square(8.0),
-                      activeSize: Size(18.0, 8.0),
+                      size: const Size.square(8.0),
+                      activeSize: const Size(18.0, 8.0),
                       activeShape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5))),
                 ),
@@ -109,12 +109,22 @@ class _WelcomeState extends State<Welcome> {
           ),
         ),
         GestureDetector(
-          onTap: () => index < 2
-              ? pageController.animateToPage(index + 1,
-                  duration: Duration(milliseconds: 500),
-                  curve: Curves.decelerate)
-              : Navigator.of(context)
-                  .pushNamedAndRemoveUntil('sigin', (route) => false),
+          onTap: () {
+            if (index < 2) {
+              pageController.animateToPage(index + 1,
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.decelerate);
+            } else {
+              Global.storageService
+                  .setBool(STORAGE_DEVICE_OPEN_FIRST_TIME, true);
+              print(
+                  'The device is ${Global.storageService.getDeviceFirstOpen()}');
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                'sigin',
+                (route) => false,
+              );
+            }
+          },
           child: Container(
             margin: EdgeInsets.only(top: 70.h, left: 25.w, right: 25.w),
             width: 325.w,
@@ -127,12 +137,12 @@ class _WelcomeState extends State<Welcome> {
                       color: Colors.grey.withOpacity(0.3),
                       spreadRadius: 1,
                       blurRadius: 2,
-                      offset: Offset(0, 1)),
+                      offset: const Offset(0, 1)),
                 ]),
             child: Center(
               child: Text(
                 buttonName,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 24,
                     color: Colors.white,
                     fontWeight: FontWeight.normal),

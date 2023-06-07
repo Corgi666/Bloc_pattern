@@ -35,9 +35,7 @@ class RegisterController {
       if (creadential.user != null) {
         await creadential.user?.sendEmailVerification();
         await creadential.user?.updateDisplayName(userName);
-        toastInfo(
-            msg:
-                "An email has been sent to your registered email. To activate it please check your email box and click on the link");
+        toastInfo(msg: "An email has been sent to your registered email.");
         Navigator.pop(context);
       }
     } on FirebaseAuthException catch (e) {

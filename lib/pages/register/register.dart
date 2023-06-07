@@ -1,4 +1,3 @@
-import 'package:appbloc/common/theme/theme_confige.dart';
 import 'package:appbloc/common/values/colors.dart';
 import 'package:appbloc/controller/register_controller.dart';
 import 'package:appbloc/pages/register/bloc/registering_bloc.dart';

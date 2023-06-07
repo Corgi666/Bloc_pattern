@@ -1,6 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:appbloc/common/values/constant.dart';
 import 'package:appbloc/common/widgets/flutter_toast.dart';
+import 'package:appbloc/global.dart';
 import 'package:appbloc/pages/sigin/bloc/signin_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,7 +13,7 @@ class SignInController {
   final BuildContext context;
   const SignInController({required this.context});
 
-  void handleSignIn(String type) async {
+  Future<void> handleSignIn(String type) async {
     try {
       if (type == 'email') {
         final state = context.read<SignInBloc>().state;
@@ -33,7 +38,7 @@ class SignInController {
                   email: emailAdress, password: password);
           if (credential.user == null) {
             //
-            print('user is null');
+            print('/Go.to.ApplicationPage');
           }
           if (!credential.user!.emailVerified) {
             //
@@ -42,7 +47,14 @@ class SignInController {
 
           var user = credential.user;
           if (user != null) {
-            print(user.toString());
+            print('User is join in');
+
+            Global.storageService.setString(STORAGE_USER_TOKEN_KEY, "123456");
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              'application',
+              (route) => false,
+            );
           } else {
             // user is exited
           }

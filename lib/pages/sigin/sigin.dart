@@ -30,13 +30,11 @@ class _SigInState extends State<SigIn> {
                 fontWeight: FontWeight.normal),
           ),
           bottom: PreferredSize(
+              preferredSize: const Size.fromHeight(1.0),
               child: Container(
-                child: Container(
-                  color: AppColors.primarySecondaryBackground,
-                  height: 1.0,
-                ),
-              ),
-              preferredSize: Size.fromHeight(1.0)),
+                color: AppColors.primarySecondaryBackground,
+                height: 1.0,
+              )),
           backgroundColor: Colors.white,
           elevation: 0,
           toolbarHeight: 50.h,
@@ -70,8 +68,8 @@ class _SigInState extends State<SigIn> {
                 ),
               ),
               forgotPassword(),
-              buildLoginAndRegButton('Login', 'Login', () {
-                SignInController(context: context).handleSignIn('email');
+              buildLoginAndRegButton('Login', 'Login', () async {
+                await SignInController(context: context).handleSignIn('email');
               }),
               buildLoginAndRegButton('Register', 'register', () {
                 Navigator.of(context).pushNamed('register');
