@@ -1,5 +1,6 @@
 import 'package:appbloc/common/theme/theme_confige.dart';
 import 'package:appbloc/common/values/colors.dart';
+import 'package:appbloc/controller/register_controller.dart';
 import 'package:appbloc/pages/register/bloc/registering_bloc.dart';
 import 'package:appbloc/pages/sigin/widgets/sign_in_widget.dart';
 import 'package:flutter/material.dart';
@@ -96,6 +97,7 @@ class _RegisterState extends State<Register> {
             ),
             buildLoginAndRegButton('Sign Up', 'Login', () {
               // SignInController(context: context).handleSignIn('email');
+              RegisterController(context).handleEmailRegister();
             }),
           ],
         ),
