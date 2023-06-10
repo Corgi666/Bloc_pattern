@@ -20,12 +20,6 @@ class _ApplicationPageState extends State<ApplicationPage> {
     return BlocBuilder<AppBloc, AppState>(
       builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(
-            title: Text(
-              pageList[state.index],
-              style: const TextStyle(color: Colors.black),
-            ),
-          ),
           body: buildPage(state.index),
           bottomNavigationBar: Container(
             width: 375.w,

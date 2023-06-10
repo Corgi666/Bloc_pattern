@@ -1,4 +1,5 @@
 import 'package:appbloc/common/values/colors.dart';
+import 'package:appbloc/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -80,8 +81,14 @@ final List<BottomNavigationBarItem> bottomItem = [
       ))
 ];
 
-final List<String> pageList = ['Home', 'Search', 'Course', 'Chat', 'Profile'];
-
 Widget buildPage(int index) {
-  return Center(child: Text(pageList[index]));
+  List<Widget> _widget = [
+    const HomePageScreen(),
+    Text('Search'),
+    Text('Course'),
+    Text('Chat'),
+    Text('Profile')
+  ];
+
+  return _widget[index];
 }
