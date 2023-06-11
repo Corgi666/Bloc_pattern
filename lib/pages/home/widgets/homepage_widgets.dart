@@ -9,6 +9,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../application/bloc/app_bloc.dart';
 import '../bloc/homepage_bloc.dart';
 
+//? ReUSEABLE
+
 Widget _reuseableSlideWidget(int index) {
   final List<String> img = ['Art.png', 'Image(1).png', 'Image(2).png'];
   return Container(
@@ -59,6 +61,7 @@ Widget _reusableSubTextMenu(
   );
 }
 
+// *BUILD SECTION
 SliverAppBar buildAppbar() {
   return SliverAppBar(
     pinned: true,
@@ -255,5 +258,44 @@ Widget menuView() {
         },
       )
     ],
+  );
+}
+
+Widget sliverGrid() {
+  return SliverGrid(
+    delegate: SliverChildBuilderDelegate(
+        (context, index) => GestureDetector(
+              onTap: () => print(index),
+              child: Container(
+                  padding: EdgeInsets.only(bottom: 10.h, left: 10.w),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.w),
+                      image: DecorationImage(
+                          image: AssetImage('assets/icons/Image(1).png'),
+                          fit: BoxFit.fill)),
+                  margin: EdgeInsets.all(5),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        'Best course for IT',
+                        style: TextStyle(fontSize: 11.sp, color: Colors.white),
+                        overflow: TextOverflow.fade,
+                        maxLines: 1,
+                      ),
+                      SizedBox(height: 5.h),
+                      Text(
+                        'FLutter Course',
+                        style: TextStyle(fontSize: 11.sp, color: Colors.white),
+                        overflow: TextOverflow.fade,
+                        maxLines: 1,
+                      )
+                    ],
+                  )),
+            ),
+        childCount: 30),
+    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2, childAspectRatio: 1.6),
   );
 }

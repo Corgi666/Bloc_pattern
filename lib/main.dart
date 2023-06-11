@@ -19,8 +19,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
     return MultiBlocProvider(
       providers: AppBlocProvider.allBlocProvier,
       child: ScreenUtilInit(
@@ -28,7 +26,7 @@ class MyApp extends StatelessWidget {
         builder: (context, childe) => MaterialApp(
           routes: routeHelper,
           debugShowCheckedModeBanner: false,
-          home: navigatorRoutes(),
+          home: Welcome(),
           theme: Themes.themeData,
         ),
       ),

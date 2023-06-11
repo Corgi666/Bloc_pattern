@@ -1,5 +1,6 @@
 import 'package:appbloc/global.dart';
 import 'package:appbloc/pages/application/application_page.dart';
+import 'package:appbloc/pages/profile/setting/setting_page.dart';
 import 'package:appbloc/pages/welcome/welcome.dart';
 
 import '../pages/register/register.dart';
@@ -10,6 +11,7 @@ final routeHelper = {
   'sigin': (context) => const SigIn(),
   'register': (context) => const Register(),
   'application': (context) => const ApplicationPage(),
+  'setting': (context) => const SettingScreen()
 };
 
 Widget navigatorRoutes() {

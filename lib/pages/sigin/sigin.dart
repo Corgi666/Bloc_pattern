@@ -1,4 +1,5 @@
 import 'package:appbloc/common/values/colors.dart';
+import 'package:appbloc/global.dart';
 import 'package:appbloc/pages/sigin/bloc/signin_bloc.dart';
 import 'package:appbloc/pages/sigin/bloc/signin_event.dart';
 import 'package:appbloc/pages/sigin/bloc/signin_state.dart';
@@ -18,6 +19,7 @@ class SigIn extends StatefulWidget {
 class _SigInState extends State<SigIn> {
   @override
   Widget build(BuildContext context) {
+    print('Login is ${Global.storageService.getIsLoggedIn()}');
     return BlocBuilder<SignInBloc, SignInState>(builder: ((context, state) {
       return Scaffold(
         backgroundColor: Colors.white,

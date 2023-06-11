@@ -1,5 +1,6 @@
 import 'package:appbloc/pages/application/bloc/app_bloc.dart';
 import 'package:appbloc/pages/home/bloc/homepage_bloc.dart';
+import 'package:appbloc/pages/profile/setting/bloc/setting_bloc.dart';
 import 'package:appbloc/pages/register/bloc/registering_bloc.dart';
 import 'package:appbloc/pages/sigin/bloc/signin_bloc.dart';
 import 'package:appbloc/pages/welcome/bloc/welcom_bloc.dart';
@@ -13,8 +14,7 @@ class AppBlocProvider {
         BlocProvider(lazy: true, create: (context) => SignInBloc()),
         BlocProvider(lazy: true, create: (context) => RegisteringBloc()),
         BlocProvider(lazy: false, create: (context) => AppBloc()),
-        BlocProvider(
-          create: (context) => HomepageBloc(),
-        )
+        BlocProvider(lazy: false, create: (context) => HomepageBloc()),
+        BlocProvider(lazy: false, create: (context) => SettingBloc())
       ];
 }

@@ -15,7 +15,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        margin: EdgeInsets.symmetric(horizontal: 25.w),
+        margin: EdgeInsets.symmetric(horizontal: 20.w),
         child: CustomScrollView(
           slivers: [
             buildAppbar(),
@@ -41,19 +41,8 @@ class _HomePageScreenState extends State<HomePageScreen> {
               title: menuView(),
             ),
             SliverPadding(
-              padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 0.w),
-              sliver: SliverGrid(
-                  delegate: SliverChildBuilderDelegate(
-                      (context, index) => Container(
-                            color: Colors.black,
-                            margin: EdgeInsets.all(5),
-                            width: 100.w,
-                            height: 100.h,
-                          ),
-                      childCount: 4),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2)),
-            ),
+                padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 0.w),
+                sliver: sliverGrid()),
           ],
         ),
       ),

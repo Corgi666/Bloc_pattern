@@ -1,3 +1,4 @@
+import 'package:appbloc/common/values/colors.dart';
 import 'package:flutter/material.dart';
 
 class Themes {
@@ -14,3 +15,5 @@ class Themes {
 bool isDarkMode(BuildContext context) {
   return MediaQuery.of(context).platformBrightness == Brightness.dark;
 }
+
+TextStyle get commonText => TextStyle(color: AppColors.primaryText);
